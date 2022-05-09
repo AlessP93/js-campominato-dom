@@ -25,4 +25,4 @@ while (bombNumbers.length < 100) {
     }
 }
 
-//4. L’utente non può inserire più volte lo stesso numero.
+//4. Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
