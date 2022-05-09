@@ -17,7 +17,8 @@ function cpuRandom(min, max) {
 }
 
 //2. creo funzione while che chiede un numero fin quando il numero non è dentro bombnumbers
-while (bombNumbers.length < 100) {
+let bombNumbers 
+while( bombNumbers.length < 100 ) {
     let number = cpuRandom(1, 16);
     //3. verifica che i numeri non sono duplicati
     if(!bombNumbers.includes(number)) {
