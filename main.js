@@ -41,15 +41,24 @@ while ( !bombExploded && attempts.length < 84 ) {
     do {
         //8. dentro al ciclo chiediamo all'utente un numero
         userNumber = Number(prompt("Inserisci un numero"));
+        console.log(userNumber);
         //9. verifichiamo che il numero che inserisce l utente sia valido (tra 1 e 100 e che sia un numero);
     } while ( isNaN(userNumber) || userNumber < 1 || userNumber > 100)
 }
-// se è un numero valido ci chiediamo poi se è un numero che è già stato scelto (quindi facciamo un controllo nell'array delle scelte dell'utente)
-if (userNumber)
+// ci chiediamo poi se è un numero che è già stato scelto (quindi facciamo un controllo nell'array delle scelte dell'utente) array attempt
+if ( attempts.includes(userNumber) ) {
+    alert("Il numero è gia stato scelto")
+    // ci chiediamo poi se il numero è una bomba (quindi facciamo un controllo sulla bombNumbers che tiene tutte le bombe)
+} else if bombNumbers.includes(userNumber) {
+    bombExploded = true
+} else {
+    attempts.push(userNumber)
+}
 
 
 
 
-// se è un numero valido, allora ci chiediamo se il numero è una bomba (quindi facciamo un controllo sulla bombNumbers che tiene tutte le bombe)
+
+
 // se è una mina allora abbiamo perso e dobbiamo fermare il gioco
 // altrimenti si salva nell'array delle scelte il numero e si continua
