@@ -9,24 +9,19 @@
 
 //1. il PC genera 16 numeri casuali tra 1 e 100
 function cpuRandom(min, max) {
-    let bombNumbers = [];
-    for ( let i=0; i < 16; i++ ) {
-        bombNumbers.push(Math.floor(Math.random() * 100) + 1);
-    }
-    return bombNumbers;
+   return Math.floor(Math.random() * 100) + 1;
 }
 
 //2. creo una variabile let e una funzione while che chiede un numero fin quando il numero non è dentro bombnumbers
-let bombNumbers = cpuRandom (1, 16);
-console.log(bombNumbers);
-while( bombNumbers.length < 100 ) {
-    let number = cpuRandom(1, 16);
+const bombList = [];
+while( bombList.length < 16 ) {
+    let number = cpuRandom(1, 100);
     //3. verifica che i numeri non sono duplicati
-    if(!bombNumbers.includes(number)) {
-        bombNumbers.push(number);
+    if(!bombList.includes(number)) {
+        bombList.push(number);
     }
 }
-console.log(bombNumbers);
+console.log(bombList);
 
 //4. In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 //5. L’utente non può inserire più volte lo stesso numero.
@@ -44,21 +39,22 @@ while ( !bombExploded && attempts.length < 84 ) {
         
         //9. verifichiamo che il numero che inserisce l utente sia valido (tra 1 e 100 e che sia un numero);
     } while ( isNaN(userNumber) || userNumber < 1 || userNumber > 100)
+
+    //10. ci chiediamo poi se è un numero che è già stato scelto (quindi facciamo un controllo nell'array delle scelte dell'utente) array attempt
+    if ( bombList.includes(userNumber)) {
+        bombExploded = true;
+        alert("Hai preso una bomba!")
+        //11. ci chiediamo poi se il numero è una bomba (quindi facciamo un controllo sulla bombNumbers che tiene tutte le bombe)
+    } else if ( attempts.includes(userNumber) ) {
+        alert("Il numero è gia stato scelto")
+    } else {
+        //12. altrimenti si salva nell'array delle scelte il numero e si continua
+        attempts.push(userNumber)
+    }
+    //13. se è una mina allora abbiamo perso e dobbiamo fermare il gioco
+    console.log("Il gioco è terminato");
+    
 }
-// ci chiediamo poi se è un numero che è già stato scelto (quindi facciamo un controllo nell'array delle scelte dell'utente) array attempt
-if ( bombNumbers.includes(userNumber)) {
-    bombExploded = true;
-    // ci chiediamo poi se il numero è una bomba (quindi facciamo un controllo sulla bombNumbers che tiene tutte le bombe)
-} else if ( attempts.includes(userNumber) ) {
-    alert("Il numero è gia stato scelto")
-} else {
-    attempts.push(userNumber)
-}
-
-console.log("Il gioco è terminato");
 
 
 
-
-// se è una mina allora abbiamo perso e dobbiamo fermare il gioco
-// altrimenti si salva nell'array delle scelte il numero e si continua
