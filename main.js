@@ -31,14 +31,13 @@ function cpuRandom(min, max) {
 //2. creo un array vuoto e una funzione while che chiede un numero fin quando il numero non è dentro   BOMBLIST
 const bombList = [];
 while( bombList.length < 16 ) {
-    const number = cpuRandom(1, 100);
+    let number = cpuRandom(1, 100);
     //3. verifica che i numeri non sono duplicati 
     if(!bombList.includes(number)) {
         bombList.push(number);
     }
-    console.log(number);
 }
-
+console.log(bombList);
 
 //4. In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 //5. L’utente non può inserire più volte lo stesso numero.
