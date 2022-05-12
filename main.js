@@ -7,21 +7,38 @@
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
 
-//1. il PC genera 16 numeri casuali tra 1 e 100
+// BONUS: (da fare solo se funziona tutto il resto)
+// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 => tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+
+
+// Scrivi un programma che stampi in console i numeri da 1 a 100       HTML
+const list = document.querySelector(".list")
+for (let i = 1; i <= 100; i++) {
+    const element = document.createElement("li");
+    element.classList.add("item");
+    element.innerHTML = i;
+    list.append(element);
+}
+
+//1. il PC genera 16 numeri casuali tra 1 e 100      CPURANDOM
 function cpuRandom(min, max) {
    return Math.floor(Math.random() * 100) + 1;
 }
 
-//2. creo una variabile let e una funzione while che chiede un numero fin quando il numero non è dentro bombnumbers
+//2. creo un array vuoto e una funzione while che chiede un numero fin quando il numero non è dentro   BOMBLIST
 const bombList = [];
 while( bombList.length < 16 ) {
-    let number = cpuRandom(1, 100);
-    //3. verifica che i numeri non sono duplicati
+    const number = cpuRandom(1, 100);
+    //3. verifica che i numeri non sono duplicati 
     if(!bombList.includes(number)) {
         bombList.push(number);
     }
+    console.log(number);
 }
-console.log(bombList);
+
 
 //4. In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 //5. L’utente non può inserire più volte lo stesso numero.
